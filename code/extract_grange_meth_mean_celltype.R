@@ -1,0 +1,17 @@
+library(bsseq)
+args = commandArgs(trailingOnly=TRUE)
+
+bs.filtered<- readRDS(args[1])
+
+df.test <- read.table(file=args[2],header=T,sep="\t")
+sub.grange<-makeGRangesFromDataFrame(df.test)
+sub.meth.region <- getMeth(bs.filtered,regions=sub.grange,type="raw",what="perRegion")
+#write.csv(format(sub.meth.region,digits=3), file=args[3],row.names=F,quote=F)
+Human_ND_mean <- rowMeans(sub.meth.region[,1:10], na.rm=TRUE)
+Chimp_ND_mean <- rowMeans(sub.meth.region[,11:20], na.rm=TRUE)
+Macaq_ND_mean <- rowMeans(sub.meth.region[,21:30], na.rm=TRUE)
+Human_OD_mean <- rowMeans(sub.meth.region[,31:40], na.rm=TRUE)
+Chimp_OD_mean <- rowMeans(sub.meth.region[,41:50], na.rm=TRUE)
+Macaq_OD_mean <- rowMeans(sub.meth.region[,51:60], na.rm=TRUE)
+mean.meth.region <- data.frame(Human_ND_mean=Human_ND_mean,Chimp_ND_mean=Chimp_ND_mean,Macaq_ND_mean=Macaq_ND_mean,Human_OD_mean=Human_OD_mean,Chimp_OD_mean=Chimp_OD_mean,Macaq_OD_mean=Macaq_OD_mean)
+write.csv(format(mean.meth.region,digits=3), file=args[3],row.names=F,quote=F)
