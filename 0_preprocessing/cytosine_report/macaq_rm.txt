@@ -1,0 +1,1 @@
+mv YN11-78_ND_*.chrchr* YN12-335_ND_*.chrchr* YN11-300_ND_*.chrchr* YN09-59_ND_*.chrchr* YN12-409_ND_*.chrchr* YN09-179_OD_*.chrchr* YN12-335_OD_*.chrchr* YN11-64_OD_*.chrchr* tmp/

@@ -1,0 +1,1 @@
+mv BJORN_ND_*.chrchr* LYK_OD_*.chrchr* tmp/
